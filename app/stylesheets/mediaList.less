@@ -1,0 +1,75 @@
+@letter-dark-shadow: rgba(0, 0, 0, 0.8);
+@letter-light-shadow: rgba(0, 0, 0, 0.8);
+/*@letter-light-shadow: rgba(128, 128, 128, 0.3);*/
+@letter-color: @gray-lighter;
+@letter-shadow-spread: 2px;
+
+.media-list-view {
+  margin-top: 15px;
+}
+
+.media-list-item {
+  display: block;
+  background-size: cover;
+  box-shadow: 3px 3px 3px 0 rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  height: 200px;
+  margin: 0 auto 15px;
+  width: 100%;
+  position: relative;
+
+  &,
+  &:before,
+  &:after {
+    transition: all 0.25s;
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    transform: scale(1.2);
+    z-index: 9999;
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.3);
+
+    &:before,
+    &:after {
+      opacity: 0;
+    }
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+  }
+
+  &:after {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  h4 {
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.3);
+    color: @letter-color;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+    text-overflow: ellipsis;
+    text-shadow: -@letter-shadow-spread -@letter-shadow-spread 0 @letter-light-shadow, // top left
+                @letter-shadow-spread @letter-shadow-spread 0 @letter-dark-shadow, // bottom right
+                -@letter-shadow-spread @letter-shadow-spread 0 @letter-dark-shadow, // bottom left
+                @letter-shadow-spread -@letter-shadow-spread 0 @letter-light-shadow, // top right
+                0 @letter-shadow-spread 0 @letter-dark-shadow, // bottom
+                0 -@letter-shadow-spread 0 @letter-light-shadow, // top
+                @letter-shadow-spread 0 0 @letter-dark-shadow, // right
+                -@letter-shadow-spread 0 0 @letter-light-shadow; // left
+    top: 150px;
+    white-space: nowrap;
+  }
+}

@@ -6,6 +6,12 @@ config = require 'config'
 CharacterCollection = MediaCollection.extend
   model: CharacterModel
 
+  initialize: ->
+    @listenTo application.vent, 'navigate:link', @onNavigateLink
+
+  onNavigateLink: ->
+    @reset()
+
   url: ->
     limit = @itemsPerPage
     offset = Math.max 0, @page * limit

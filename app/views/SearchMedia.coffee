@@ -17,6 +17,8 @@ SearchMediaView = Marionette.ItemView.extend
 
     query = @ui.input.val()
 
-    application.vent.trigger 'search:all', {query}
+    href = "#/?q=#{query}"
+
+    application.vent.trigger 'navigate:link', {href}
 
 module.exports = SearchMediaView

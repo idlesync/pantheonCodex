@@ -7,17 +7,6 @@ MediaCollection = Backbone.Collection.extend
   totalCount: 0
   query: ''
 
-  initialize: ->
-    @listenTo application.vent, 'search:all', @onSearchTerm
-
-  onSearchTerm: (data) ->
-    @reset()
-
-    @totalCount = 0
-    @query = data.query
-    @page = 0
-    @fetch()
-
   parse: (response) ->
     @totalCount = response.data.total
 
